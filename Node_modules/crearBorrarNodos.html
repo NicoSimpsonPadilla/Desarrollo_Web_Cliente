@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear y Borrar Nodos</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+</head>
+<style>
+    body {
+        background-color: gray;
+    }
+
+    div {
+        margin-bottom: 10px;
+        margin-left: 10px;
+        width: 100px;
+        height: 100px;
+        background-color: blue;
+        color: white;
+        text-align: center;
+        border-radius: 20px;
+    }
+
+    .parra {
+        margin-bottom: 10px;
+        margin-left: 10px;
+        width: 200px;
+        height: 200px;
+        background-color: blueviolet;
+        text-align: center;
+        color: white;
+        border-radius: 20px;
+    }
+</style>
+<body>
+    <section>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </section>
+
+    <input class="btn btn-info" type="button" value="Crear">
+    <input class="btn btn-info" type="button" value="Borrar" disabled>
+    <input class="btn btn-info"  type="button" value="Borrar Todo">
+
+</body>
+</html>
+
+<script>
+    
+    window.onload = function() {
+
+        // Para seleccionar solo los inputs que
+        // sean bottones en un array
+        let botones = document.querySelectorAll("input[type='button']");
+
+        let divis = document.querySelectorAll("div");
+        for (let i = 0; i < divis.length; i++) {
+            divis[i].textContent = "POS " + i;
+            // Para ponerle padding
+            divis[i].style.setProperty("padding", "2.5%");
+        }
+
+        botones[0].onclick = function() {
+            // 1 - Crear el tipo de nodo deseado
+            let nuevo = document.createElement("p");
+
+            // 2 - Colocar atributos SI LOS TUVIERA
+            nuevo.setAttribute("class", "parra");
+
+            // 3 - Creo un nodo texto SI LO NECESITO
+            let texto = document.createTextNode("Alvaro Romero sera el primero en tener chiquillos de la clase");
+            
+            // 3.1 - Engancho el modo texto en el nuevo elemento
+            nuevo.appendChild(texto);
+
+            // 4 - Engancho el nuevo elemento a UN PADRE
+            // document.body.appendChild(nuevo); Para engancharlo al padre siendo el ultimo
+            
+            // Para engancharlo en un sitio en especifico
+            let padre = document.querySelector("section");
+            padre.insertBefore(nuevo, divis[2]);
+
+            // Activamos el boton Borrar
+            botones[1].removeAttribute("disabled");
+        }
+
+        botones[1].onclick = function() {
+            let muerto = document.querySelector("p");
+            let padre = muerto.parentNode.removeChild(muerto);
+            
+            botones[1].setAttribute("disabled");
+        }
+
+        botones[2].onclick = function() {
+            let padre = document.querySelector("section");
+            let hijos = padre.children;
+            
+            for (let i = 0; i < hijos.length; i++) {
+                padre.removeChild(hijos[i]);
+            }
+        }
+    }
+
+</script>

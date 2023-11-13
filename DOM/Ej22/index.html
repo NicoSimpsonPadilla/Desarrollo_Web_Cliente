@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 20</title>
+</head>
+<style>
+    img {
+        width: 25%;
+        z-index: 1;
+    }
+</style>
+<body>
+    <h2>Galeria de Imagenes</h2>
+    <img src="yato.jpg" alt="Imagen del ejercicio">
+</body>
+<script>
+    let img = document.querySelector("img");
+    let fondo = document.createElement("div");
+    let aux = true;
+    img.onclick = function () {
+        if (aux) {
+            aux = false;
+
+            fondo.style.position = "fixed";
+            fondo.style.top = "0";
+            fondo.style.left = "0";
+            fondo.style.width = "100%";
+            fondo.style.height = "100%";
+            fondo.style.backgroundColor = "rgba(0,0,0,0.7)";
+            fondo.style.zIndex = "9";
+
+            img.style.setProperty("display", "none");
+
+            let imgAmpliada = document.createElement("img");
+            imgAmpliada.src = "yato.jpg";
+            imgAmpliada.style.position = "absolute";
+            imgAmpliada.style.top = "50%";
+            imgAmpliada.style.left = "50%";
+            imgAmpliada.style.transform = "translate(-50%, -50%)";
+            imgAmpliada.style.Width = "100%";
+            imgAmpliada.style.maxHeight = "100%";
+            imgAmpliada.style.setProperty("width", "50%");
+
+            fondo.appendChild(imgAmpliada);
+            document.body.appendChild(fondo);
+        }
+    }
+    fondo.onclick = function () {
+        document.body.removeChild(fondo);
+        img.style.setProperty("display", "");
+        aux = true;
+    }
+</script>
+</html>

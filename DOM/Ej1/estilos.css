@@ -1,0 +1,17 @@
+.pakita {
+    background-color: lightblue;
+}
+
+.chichio {
+    background-color: lightgreen;
+}
+
+.botones {
+    background-color: rgb(74, 158, 158);
+    padding: 2%;
+}
+
+.botones button {
+    padding: 1%;
+    border-radius: 10px;
+}

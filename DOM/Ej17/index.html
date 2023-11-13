@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 17</title>
+</head>
+<style>
+    div {
+        left: 0;
+        position: absolute;
+        width: 100px;
+        height: 100px;
+        border-radius: 20px;
+
+    }
+
+    .rojo {
+        margin-top: 0px;
+        background-color: red;
+    }
+
+    .azul {
+        margin-top: 110px;
+        background-color: blue;
+    }
+
+    .verde {
+        margin-top: 220px;
+        background-color: green;
+    }
+
+    .naranja {
+        margin-top: 330px;
+        background-color: orange;
+    }
+
+    .meta {
+        margin-top: 0px;
+        left: 1180px;
+        background-color: black;
+        width: 5px;
+        height: 440px;
+    }
+
+    button {
+        margin-top: 440px;
+    }
+</style>
+<body>
+    <div class="rojo"></div>
+    <div class="azul"></div>
+    <div class="verde"></div>
+    <div class="naranja"></div>
+    <div class="meta"></div>
+
+    <button>CORRER</button>
+    <button>RESET</button>
+</body>
+
+<script>
+        let cajas = document.querySelectorAll("div");
+        let botones = document.querySelectorAll("button");
+        let final = false;
+        let velocidades = [];
+
+        let estilo0 = window.getComputedStyle(cajas[0]);
+        let estilo1 = window.getComputedStyle(cajas[1]);
+        let estilo2 = window.getComputedStyle(cajas[2]);
+        let estilo3 = window.getComputedStyle(cajas[3]);
+
+        botones[0].onclick = function() {
+            final = false;
+            timer = setInterval(function() {
+                for (let i = 0; i < 4; i++) {
+                    velocidades[i] = parseInt(Math.random() * 10 + 1);
+                }
+                
+                if (parseInt(estilo0.getPropertyValue("left")) >= 1080) {
+                    final = true;
+                    alert("Ha ganado la caja 1");
+                }
+                if (parseInt(estilo1.getPropertyValue("left")) >= 1080) {
+                    final = true;
+                    alert("Ha ganado la caja 2");
+                }
+                if (parseInt(estilo2.getPropertyValue("left")) >= 1080) {
+                    final = true;
+                    alert("Ha ganado la caja 3");
+                }
+                if (parseInt(estilo3.getPropertyValue("left")) >= 1080) {
+                    final = true;
+                    alert("Ha ganado la caja 4");
+                }
+
+                if (!final) {
+                    cajas[0].style.setProperty(
+                        "left",
+                        parseInt(estilo0.getPropertyValue("left")) + velocidades[0] + "px"
+                    );
+                    cajas[1].style.setProperty(
+                        "left",
+                        parseInt(estilo1.getPropertyValue("left")) + velocidades[1] + "px"
+                    );
+                    cajas[2].style.setProperty(
+                        "left",
+                        parseInt(estilo2.getPropertyValue("left")) + velocidades[2] + "px"
+                    );
+                    cajas[3].style.setProperty(
+                        "left",
+                        parseInt(estilo3.getPropertyValue("left")) + velocidades[3] + "px"
+                    );
+                } else {
+                    clearInterval(timer);
+                }
+            },50);        
+        }
+        botones[1].onclick = function () {
+            for (let i = 0; i < 4; i++) {
+                cajas[i].style.setProperty("left", "0px");
+            }
+            final = true;
+            clearInterval(timer);
+        };
+</script>
+</html>

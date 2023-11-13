@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 10</title>
+</head>
+    <style>
+        div {
+        margin-left: 5% ;
+        width: 90%;
+        height: 100px;
+        border-radius: 50px;
+        }
+        section {
+            background-color: grey;
+            border-radius: 20px;
+            width: 15%;
+            padding: 10px;
+        }
+    </style>
+<body>
+
+    <section>
+        <div></div>
+        <div></div>
+        <div></div>
+    </section>
+
+    <script>
+        window.onload = function() {
+
+            let fondo = document.querySelector("body");
+            if (fondo.style.getPropertyValue("background-color") == "") {
+                fondo.style.setProperty("background-color", "white");
+            }
+
+            let casillas = document.querySelectorAll("div");
+            casillas[0].style.setProperty("background-color", "red");
+            casillas[1].style.setProperty("background-color", "orange");
+            casillas[2].style.setProperty("background-color", "green");
+
+            casillas[0].onmouseenter = function (e) {
+                fondo.style.setProperty("background-color", casillas[0].style.getPropertyValue("background-color"));
+            }
+            casillas[0].onmouseleave = function (e) {
+                fondo.style.setProperty("background-color", "white");;
+            }
+            casillas[1].onmouseenter = function (e) {
+                fondo.style.setProperty("background-color", casillas[1].style.getPropertyValue("background-color"));
+            }
+            casillas[1].onmouseleave = function (e) {
+                fondo.style.setProperty("background-color", "white");;
+            }
+            casillas[2].onmouseenter = function (e) {
+                fondo.style.setProperty("background-color", casillas[2].style.getPropertyValue("background-color"));
+            }
+            casillas[2].onmouseleave = function (e) {
+                fondo.style.setProperty("background-color", "white");;
+            }
+            
+        }
+    </script>
+</body>
+</html>

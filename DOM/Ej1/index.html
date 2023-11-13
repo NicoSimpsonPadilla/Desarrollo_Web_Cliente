@@ -1,26 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
+    <link rel="stylesheet" href="estilos.css">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ejercicio1</title>
 </head>
 <body>
-    <table class="pakita" class="chichio" 
-    border="1"; width="200" height="300">
+    <br><br>
+    <div class="botones">
+        <button onclick="alturaAnchura()">Altura y Anchura</button>
+        <button onclick="tipoBorde()">Tipo del borde</button>
+        <button onclick="alineacion()">Cambia la alineacion</button>
+        <button onclick="cambioClase()">Cambia la clase</button>
+        <button onclick="fixcell()">Arreglar tabla</button>
+        <button onclick="test()">Test</button>
+    </div>
+    <br><br><br><br>
+
+    <table class="pakita" border="1"
+     width="200" height="300" align="left">
         <tr align="center">
-            <td colspan="2">1</td>
+            <td>1</td>
+            <td>2</td>
         </tr>
         <tr align="center">
-            <td>2</td>
             <td>3</td>
         </tr>
     </table>
-    <br><br><br><br>
-    <script src="js/app.js"></script>
-    <button onclick="alturaAnchura()">Altura y Anchura</button>
-    <button onclick="tipoBorde()">Tipo del borde</button>
-    <button onclick="alineacion()">Cambia la alineacion</button>
-    <button onclick="cambioCalse()">Cambia la clase</button>
 </body>
 </html>
