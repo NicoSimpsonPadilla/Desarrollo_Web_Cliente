@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 2</title>
+</head>
+<body>
+    <input type="text" id="texto1"><br><br>
+        <input type="text" id="texto2" 
+        readonly onmousedown="return false;">
+
+        <script>
+            let caja1 = document.getElementById("texto1");
+
+            caja1.addEventListener("keyup", function () {
+                let texto = document.getElementById("texto1").value;
+                document.getElementById("texto2").value= texto;
+            });
+        </script>
+</body>
+</html>

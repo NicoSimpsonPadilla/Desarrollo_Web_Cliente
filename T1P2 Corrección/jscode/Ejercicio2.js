@@ -18,7 +18,7 @@ window.onload = function() {
         } else {
             imgs[cont].src = "img/" + ruta;
         }
-        img[cont].setAttribute("class", "foto");
+        imgs[cont].setAttribute("class", "foto");
         galeria.appendChild(imgs[cont]);
 
         cont++;

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 1</title>
+</head>
+<body>
+    <form action="formulario">
+        <input type="text" id="texto-1"><br><br>
+        <input type="text" id="texto-2" 
+        readonly onmousedown="return false;"><br><br>
+        <input type="button" id="copy" value="copiar"><br><br>
+    </form>
+
+    <script>
+        let boton = document.querySelector("input[type='button']");
+
+        boton.addEventListener("click", function () {
+            let textos = document.querySelectorAll("input[type='text']");
+            let copia = textos[0].value;
+            textos[1].value = copia;
+        });
+    </script>
+</body>
+</html>
