@@ -5,7 +5,92 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Eventos</title>
 </head>
+<style>
+    body{
+        background-color: black;
+    }
+
+    section {
+        margin: 0 auto;
+        width: 40%;
+        height: 200px;
+        padding: 2%;
+        background-color: rgb(32, 32, 85);
+    }
+
+    div {
+        margin: 0 auto;
+        width: 70%;
+        height: 150px;
+        padding: 2%;
+        background-color: rgb(64, 64, 165);
+    }
+
+    p {
+        text-align: center;
+        margin: 0 auto;
+        width: 75%;
+        height: 100px;
+        padding: 2%;
+        background-color: rgb(130, 130, 250);
+    }
+</style>
 <body>
-    
+    <section>
+        <div>
+            <p>Haz click on me, baby</p>
+        </div>
+    </section>
+    <input type="button" id="boton" value="Boton">
 </body>
 </html>
+
+<script>
+    let hijo = document.querySelector("p");
+    let padre = document.querySelector("div");
+    let abuelo = document.querySelector("section");
+
+    // hijo.onclick = function() {
+    //     alert("soy el hijo");
+    // }
+    // padre.onclick = function() {
+    //     alert("soy el padre");
+    // }
+    // abuelo.onclick = function() {
+    //     alert("soy el abuelo");
+    // }
+
+    // Mejor manera:
+    // hijo.addEventListener("click",function(e){
+    //     alert("Soy el hijo 2");
+    //     e.stopPropagation();
+    //     alert("tocame");
+    // }, true);
+    // hijo.addEventListener("click",function(){
+    //     alert("Soy el hijo 3");
+    // }, true);
+    // padre.addEventListener("click",function(){
+    //     alert("Soy el padre 2");
+    // });
+    // abuelo.addEventListener("click",function(){
+    //     alert("Soy el abuelo 2");
+    // }, true);
+    // document.body.addEventListener("click",function(){
+    //     alert("Soy el ancestro de tu antepasado");
+    // });
+
+    // Quitar:
+    function nosequedecir(e) {
+        alert("soy el hijo");
+        e.stopPropagation();
+        alert("tocame");
+    }
+
+    hijo.addEventListener("click",nosequedecir,true)
+
+    let boton = document.querySelector("input[type='button']");
+    boton.onclick = function() {
+        hijo.style.backgroundColor = "white";
+        hijo.removeEventListener("click",nosequedecir,true);
+    }
+</script>
